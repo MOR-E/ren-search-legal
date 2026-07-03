@@ -15,12 +15,12 @@
 <body>
 <p><a href="index.html">&larr; voltar</a></p>
 <h1>Política de Privacidade — Ren-Search 蓮</h1>
-<p class="updated">Última atualização: 2 de julho de 2026</p>
+<p class="updated">Última atualização: 3 de julho de 2026</p>
 
 <p>Esta política descreve quais dados o bot de Discord <strong>Ren-Search</strong> (蓮) acessa e como eles são tratados.</p>
 
 <h2>Quais dados são acessados</h2>
-<p>Quando um usuário executa o comando <code>/ren</code>, o bot lê a atividade "Ouvindo Spotify" exposta pela presença do Discord daquele usuário (não usamos a API oficial do Spotify). Isso inclui:</p>
+<p>Quando um usuário executa o comando <code>/ren</code> (ou <code>/corrigir</code>/<code>/corrigir-remover</code>), o bot lê a atividade "Ouvindo Spotify" exposta pela presença do Discord daquele usuário (não usamos a API oficial do Spotify). Isso inclui:</p>
 <ul>
   <li>Título da música</li>
   <li>Nome do artista</li>
@@ -31,19 +31,28 @@
 <h2>Como esses dados são usados</h2>
 <p>Título e artista são usados apenas para consultar bases de dados públicas de terceiros — <a href="https://animethemes.moe" target="_blank" rel="noopener">AnimeThemes</a>, <a href="https://anilist.co" target="_blank" rel="noopener">AniList</a> e <a href="https://jisho.org" target="_blank" rel="noopener">Jisho</a> — e identificar se a música pertence a um anime. Nenhum dado de identificação do usuário (nome, ID de conta, etc.) é enviado a esses serviços.</p>
 
-<h2>Armazenamento e retenção</h2>
-<p>Os resultados são mantidos apenas em <strong>cache em memória</strong>, associados ao <code>syncId</code> da faixa:</p>
+<h2>Armazenamento e retenção — resultados do /ren</h2>
+<p>Os resultados do <code>/ren</code> são mantidos apenas em <strong>cache em memória</strong>, associados ao <code>syncId</code> da faixa:</p>
 <ul>
   <li>30 minutos para resultados encontrados</li>
   <li>1 hora para resultados não encontrados</li>
 </ul>
-<p>Não há banco de dados persistente. O cache é perdido automaticamente ao expirar ou quando o processo do bot reinicia. Nenhum dado é armazenado permanentemente, vendido ou compartilhado com terceiros para fins de publicidade ou análise.</p>
+<p>Esse cache é perdido automaticamente ao expirar ou quando o processo do bot reinicia. Nenhum dado é vendido ou compartilhado com terceiros para fins de publicidade ou análise.</p>
+
+<h2>Armazenamento e retenção — correções manuais (/corrigir)</h2>
+<p>O comando <code>/corrigir</code> permite que qualquer usuário submeta uma correção manual quando o <code>/ren</code> identifica errado (ou não encontra) uma música. Diferente do cache acima, essa correção é <strong>persistida em um banco de dados</strong> (não expira sozinha) e inclui:</p>
+<ul>
+  <li>O identificador (ID) da conta do Discord de quem submeteu a correção</li>
+  <li>A data/hora da submissão</li>
+  <li>O termo de busca usado e o anime/música/artista escolhido como correção</li>
+</ul>
+<p>O ID de quem corrigiu é guardado só para fins de responsabilização/auditoria (por exemplo, para reverter uma correção submetida por engano ou de má-fé) — não é usado para nenhum outro propósito, não é compartilhado publicamente nem repassado a terceiros. Uma correção permanece salva até ser sobrescrita por uma nova correção para a mesma música ou removida via <code>/corrigir-remover</code> (restrito a administradores do servidor).</p>
 
 <h2>Servidores autorizados</h2>
 <p>O bot pode manter uma lista interna de servidores (guilds) autorizados a utilizá-lo. Essa lista contém apenas identificadores de servidor do Discord, usados exclusivamente para controle de acesso ao próprio bot.</p>
 
 <h2>Seus direitos</h2>
-<p>Como nenhum dado pessoal é retido além da janela de cache descrita acima, não há dados de usuário para solicitar exclusão. Dúvidas podem ser enviadas para o contato abaixo.</p>
+<p>Os resultados do <code>/ren</code> não retêm dado pessoal além da janela de cache descrita acima. Se você submeteu uma correção via <code>/corrigir</code> e quer que o vínculo com sua conta seja removido, entre em contato pelo canal abaixo — ou peça a um administrador do servidor para rodar <code>/corrigir-remover</code> na música em questão.</p>
 
 <h2>Alterações a esta política</h2>
 <p>Esta política pode ser atualizada conforme o bot evolui. A data da última atualização está sempre indicada no topo desta página.</p>
